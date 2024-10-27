@@ -30,6 +30,9 @@
       "@components/*": [
         "./src/components/*"
       ],
+      "@contexts/*": [
+        "./src/contexts/*"
+      ],
       "@hooks/*": [
         "./src/hooks/*"
       ],

@@ -1,16 +1,12 @@
-import { Database } from '@app-types/database.types';
-import { createClient } from '@supabase/supabase-js';
-import { useMemo } from 'react';
+import { SupabaseClientContext } from '@contexts/supabase-client-context/supabase-client.context';
+import { useContext } from 'react';
 
 /**
  * Provides a Supabase client used to query the app's Supabase service
  */
 export function useSupabaseClient() {
-  return  useMemo(() =>
-    createClient<Database>(
-      import.meta.env.VITE_SUPABASE_URL,
-      import.meta.env.VITE_SUPABASE_ANON_KEY,
-    ),
-    []
-  );
+  const supabaseClient = useContext(SupabaseClientContext);
+
+  // This is guaranteed to be set. Its type is only null to satisfy the context API
+  return supabaseClient!;
 }

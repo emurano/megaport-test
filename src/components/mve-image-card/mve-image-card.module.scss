@@ -6,18 +6,33 @@
   flex-direction: column;
   gap: 0.5rem;
   //padding-top: 0.25rem;
-  padding-bottom: 0.75rem;
+  //padding-bottom: 0.75rem;
 
-  .Heading, .Summary, .Description {
+  .Heading, .Summary, .Description, .ExpandFieldSection {
     box-sizing: border-box;
     padding-left: 1rem;
     padding-right: 1rem;
   }
 
   .Heading {
-    font-size: 1.5rem;
-    font-weight: 500;
     border-bottom: 1px solid #cccccc;
+    //min-height: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    align-items: flex-start;
+    padding-bottom: 0.5rem;
+
+
+    .Name {
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+
+    .Id {
+      font-size: 0.9rem;
+      font-weight: 300;
+    }
   }
 
   .Description {
@@ -28,6 +43,18 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 0.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+
+  .ExpandFieldSection {
+    border-top: 1px solid #cccccc;
+    //padding-top: 0.5rem;
+
+    min-height: 50px;
+    display: flex;
+    align-items: center;
   }
 }
 
