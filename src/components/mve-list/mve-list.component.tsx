@@ -1,17 +1,26 @@
 import { useDataMveImages } from '@hooks/use-data-mve-images.hook';
+import { MveImageCard } from '@components/mve-image-card';
+import { LoadingElement } from '../loading-element';
+
+import styles from './mve-list.module.scss';
+
 
 export function MveList() {
-  const { isLoading, isRefetching, mveImages } = useDataMveImages();
+  const { isLoading, mveImages } = useDataMveImages();
 
   if (isLoading) {
-    return <>Loading ...</>;
+    return <LoadingElement />;
+  }
+
+  if (!mveImages) {
+    throw new Error('Mve images not found');
   }
 
   return (
-    <div>
-      The list of MVEs {isRefetching && <>Refetching</>}
-
-      <pre>{JSON.stringify(mveImages, null, 2)}</pre>
+    <div className={styles.MveList}>
+      {mveImages.map((mveImage) => (
+        <MveImageCard mveImage={mveImage} />
+      ))}
     </div>
   );
 }

@@ -1,0 +1,41 @@
+.MveImageCard {
+  border: 1px solid #cccccc;
+  border-radius: 0.5rem;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  //padding-top: 0.25rem;
+  padding-bottom: 0.75rem;
+
+  .Heading, .Summary, .Description {
+    box-sizing: border-box;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .Heading {
+    font-size: 1.5rem;
+    font-weight: 500;
+    border-bottom: 1px solid #cccccc;
+  }
+
+  .Description {
+    font-size: 1.2rem;
+  }
+
+  .Summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.5rem;
+  }
+}
+
+
+@media (max-width: 400px) {
+  .MveImageCard {
+    .Summary {
+      grid-template-columns: 1fr;
+    }
+  }
+}
