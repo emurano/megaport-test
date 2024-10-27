@@ -8,6 +8,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@src': resolve(__dirname, './src'),
+      '@app-types': resolve(__dirname, './src/types'),
       '@components': resolve(__dirname, './src/components'),
       '@hooks': resolve(__dirname, './src/hooks'),
     },

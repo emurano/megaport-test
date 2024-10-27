@@ -24,6 +24,9 @@
       "@src/*": [
         "./src/*"
       ],
+      "@app-types/*": [
+        "./src/types/*"
+      ],
       "@components/*": [
         "./src/components/*"
       ],
