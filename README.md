@@ -42,3 +42,36 @@
  - More cohesive UI usage. I am used to using a custom UI library built specifically for the project, so I do not have experience with Mui. I'd have to learn how to use Mui better
  - Split everything u into pages, using React Router for routing and URL deep linking
  - User-triggered reloading. Right now React Query will automatically refetch when a query's stale time elapses
+
+
+## Time Log
+
+- 2024-10-24 Friday
+    - 9:50pm - 10:03pm - Create and setup project
+- 2024-10-27 Sunday
+    - 5:33pm - 6:05pm
+        - Create component that will render MVE records
+        - Add hook for loading MVE records
+        - Hook for supabase client
+    - 8:45pm - 9:29pm
+        - Load MVE Images list hook
+        - Create full page error fallback for the app when errors occur
+        - Create page component
+    - 9:37pm - 10:33pm
+        - Format mve images in a list
+    - 10:33pm - 11:12pm
+        - Display the MVE image fields when the user expands the card
+        - Add context for supabase client (turns out we needed one)
+- 2024-10-28 Monday
+    - 5:48pm - 6:37pm
+        - Add sorting to MVE list
+    - 6:37pm - 7:01pm
+        - Add Filtering to MVE list
+    - 7:17pm - 8:06pm
+        - Format fields under image
+    - 10:03pm - 12:25am
+        - Format fields under image
+        - Add test data validation
+        - Add tests
+
+
