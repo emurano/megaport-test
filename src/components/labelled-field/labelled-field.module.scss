@@ -1,0 +1,14 @@
+.LabelledField {
+  display: flex;
+  flex-direction: row;
+
+  .Label {
+    width: 10em;
+    text-wrap: wrap;
+    font-weight: bold;
+  }
+
+  .Field {
+    width: 30em;
+  }
+}

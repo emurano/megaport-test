@@ -1,5 +1,5 @@
 import { MveImageField } from '@app-types/mve-image-field.type';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useSupabaseClient } from './use-supabase-client.hook';
 
 export interface UseDataMveImageFieldsHook {
@@ -14,6 +14,7 @@ export interface UseDataMveImageFieldsHook {
 export function useDataMveImageFields(
   mveImageId?: string
 ): UseDataMveImageFieldsHook {
+  const queryClient = useQueryClient();
   const supabaseClient = useSupabaseClient();
   const {
     isLoading,
@@ -21,7 +22,7 @@ export function useDataMveImageFields(
     data: fields,
   } = useQuery({
     enabled: !!mveImageId,
-    queryKey: ['mve-fields',  { mveImageId }],
+    queryKey: ['mve-fields', { mveImageId }],
     queryFn: async () => {
       const { data, error } = await supabaseClient
         .from('fields')
@@ -29,6 +30,14 @@ export function useDataMveImageFields(
         .eq('mve_image_id', mveImageId!)
         .order('field_order');
       if (error) throw error;
+
+      data?.forEach((field) =>
+        queryClient.setQueryData<MveImageField>(
+          ['mve-field', { mveImageFieldId: field.id }],
+          field
+        )
+      );
+
       return data;
     },
     throwOnError: true,

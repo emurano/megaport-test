@@ -33,6 +33,9 @@
       "@contexts/*": [
         "./src/contexts/*"
       ],
+      "@functions/*": [
+        "./src/functions/*"
+      ],
       "@hooks/*": [
         "./src/hooks/*"
       ],

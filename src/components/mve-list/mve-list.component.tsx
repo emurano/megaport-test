@@ -31,6 +31,12 @@ export function MveList({ sortBy, sortDirection, searchText }: MveListProps) {
     throw new Error('Mve images not found');
   }
 
+  if (mveImages.length === 0) {
+    return (
+      <div>No Matching images</div>
+    );
+  }
+
   return (
     <div className={styles.MveList}>
       {mveImages.map((mveImage) => (

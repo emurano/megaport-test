@@ -11,6 +11,7 @@ export default defineConfig({
       '@app-types': resolve(__dirname, './src/types'),
       '@components': resolve(__dirname, './src/components'),
       '@contexts': resolve(__dirname, './src/contexts'),
+      '@functions': resolve(__dirname, './src/functions'),
       '@hooks': resolve(__dirname, './src/hooks'),
       '@pages': resolve(__dirname, './src/pages'),
     },

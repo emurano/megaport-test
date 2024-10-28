@@ -31,50 +31,51 @@ export function MveImagePage() {
         <div className={styles.MveListPage}>
           <div className={styles.MveListContainer}>
             <div className={styles.FilterBar}>
-
               <TextField
                 label="Search"
                 variant="outlined"
                 value={searchText}
                 onChange={(event) => setSearchText(event.target.value)}
+                size="small"
               />
 
-              <FormControl>
-                <InputLabel id="sort-by-label">Sort By</InputLabel>
-                <Select
-                  value={sortBy}
-                  labelId="sort-by-label"
-                  label="Sort By"
-                  onChange={(event) =>
-                    setSortBy(event.target.value as MveImagesSortItem)
-                  }
-                  variant="outlined"
-                >
-                  {MveImagesSortItems.map(({ name, item }) => (
-                    <MenuItem value={item} key={item}>
-                      {name}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
+              <div className={styles.SortContainer}>
+                <FormControl>
+                  <InputLabel id="sort-by-label">Sort By</InputLabel>
+                  <Select
+                    value={sortBy}
+                    labelId="sort-by-label"
+                    label="Sort By"
+                    onChange={(event) =>
+                      setSortBy(event.target.value as MveImagesSortItem)
+                    }
+                    variant="outlined"
+                    size="small"
+                  >
+                    {MveImagesSortItems.map(({ name, item }) => (
+                      <MenuItem value={item} key={item}>
+                        {name}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
 
+                {sortDirection === 'desc' && (
+                  <ArrowDropUpIcon
+                    fontSize="large"
+                    color="primary"
+                    onClick={() => setSortDirection('asc')}
+                  />
+                )}
 
-
-              {sortDirection === 'desc' && (
-                <ArrowDropUpIcon
-                  fontSize="large"
-                  color="primary"
-                  onClick={() => setSortDirection('asc')}
-                />
-              )}
-
-              {sortDirection === 'asc' && (
-                <ArrowDropDownIcon
-                  fontSize="large"
-                  color="primary"
-                  onClick={() => setSortDirection('desc')}
-                />
-              )}
+                {sortDirection === 'asc' && (
+                  <ArrowDropDownIcon
+                    fontSize="large"
+                    color="primary"
+                    onClick={() => setSortDirection('desc')}
+                  />
+                )}
+              </div>
             </div>
 
             <MveList
