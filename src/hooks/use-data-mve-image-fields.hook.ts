@@ -26,7 +26,8 @@ export function useDataMveImageFields(
       const { data, error } = await supabaseClient
         .from('fields')
         .select()
-        .eq('mve_image_id', mveImageId!);
+        .eq('mve_image_id', mveImageId!)
+        .order('field_order');
       if (error) throw error;
       return data;
     },

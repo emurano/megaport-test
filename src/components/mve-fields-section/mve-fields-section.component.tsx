@@ -13,10 +13,10 @@ export function MveFieldsSection({ mveImageId }: MveFieldsSectionProps) {
 
   return (
     <div>
-      {fields
-        .sort((a, b) => a.field_order - b.field_order)
-        .map((field) => (
-        <div key={field.id}>{field.id}</div>
+      {fields.map((field) => (
+        <div key={field.id}>
+          {field.id}
+        </div>
       ))}
     </div>
   );

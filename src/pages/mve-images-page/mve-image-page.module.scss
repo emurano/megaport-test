@@ -7,9 +7,28 @@
   padding: 2rem;
 
   .MveListContainer {
-    max-width: 500px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .FilterBar {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      gap: 0.5rem;
+      align-items: center;
+    }
   }
 
 }
 
+
+
+@media (max-width: 400px) {
+
+  .MveListContainer {
+    width: 100%;
+  }
+}
 
