@@ -10,7 +10,7 @@ describe('<MveField />', () => {
 
   afterEach(() => {
     vi.restoreAllMocks();
-  })
+  });
 
   const queryClient = new QueryClient();
   const baseHook = { field: undefined, isRefetching: false, isLoading: false };
@@ -24,24 +24,40 @@ describe('<MveField />', () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MveField fieldId={'123'} isSelected={false} onSelect={onSelect} />
-      </QueryClientProvider>
+      </QueryClientProvider>,
     );
 
     expect(screen.getByTestId('mve-field-loading')).toBeInTheDocument();
   });
 
-  it('throws when mve image is not loading but mve image field is undefined', () => {
+  it('displays the mve image field\'s name once loaded', () => {
     vi.mocked(useDataMveImageField).mockReturnValue({
       ...baseHook,
       isLoading: false,
+      field: {
+        id: '123',
+        regex: '',
+        created_at: null,
+        field_order: 1,
+        key: 'one-two-three',
+        max_length: 10,
+        min_length: null,
+        max_value: 5,
+        min_value: null,
+        mve_image_id: '',
+        required: true,
+        type: null,
+        updated_at: null,
+      },
     });
+
     const onSelect = vi.fn();
-    expect(
-      render(
-        <QueryClientProvider client={queryClient}>
-          <MveField fieldId={'123'} isSelected={false} onSelect={onSelect} />
-        </QueryClientProvider>
-      )
-    ).toThrow("Error: No MVE field with id '123'");
+
+    render(
+      <QueryClientProvider client={queryClient}>
+        <MveField fieldId={'123'} isSelected={false} onSelect={onSelect} />
+      </QueryClientProvider>,
+    );
+    expect(screen.getByText('one-two-three')).toBeInTheDocument();
   });
 });

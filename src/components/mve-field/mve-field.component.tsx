@@ -20,7 +20,7 @@ export function MveField({ fieldId, onSelect, isSelected }: MveFieldProps) {
       <div>
         <div className={styles.Heading}>
           <span>
-            <span className={styles.FieldKey}>{field.key}</span>
+            <span className={styles.FieldKey} data-testid="mve-field-key">{field.key}</span>
             {field.required && (<span className={styles.Required}>{' '}*</span>)}
           </span>
 

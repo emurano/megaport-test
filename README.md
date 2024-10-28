@@ -29,7 +29,7 @@
 ✅ Allow the user to show the related input field definitions for any MVE Image from the fields table
 ❌ The user should be able to add and delete input field definitions
 ✅ The user should be able to select an input field definition and input some test data and validate whether it would be accepted
-❌ Include at least one unit test using a test framework like Jest or Vitest
+✅ Include at least one unit test using a test framework like Jest or Vitest
 
 ## Assumptions
 
