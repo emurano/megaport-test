@@ -17,6 +17,7 @@ export type MveImagesSortDirection = 'asc' | 'desc';
 export interface UseDataMveImagesOptions {
   sortBy?: MveImagesSortItem;
   sortDirection?: MveImagesSortDirection;
+  searchText?: string;
 }
 
 export interface UseDataMveImagesHook {
@@ -44,11 +45,19 @@ export function useDataMveImages(
       const orderOptions = {
         ascending: options.sortDirection !== 'desc',
       };
+      const searchText = (options.searchText ?? '').trim();
 
-      const { data, error } = await supabaseClient
+      let query = supabaseClient
         .from('mve_images')
         .select()
         .order(orderBy, orderOptions);
+
+      if (searchText.length > 0) {
+        query = query.or(`name.ilike.%${searchText}%,description.ilike.%${searchText}%`)
+      }
+
+      const { data, error } = await query;
+
       if (error) throw error;
       return data;
     },

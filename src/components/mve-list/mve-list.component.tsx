@@ -1,4 +1,8 @@
-import { MveImagesSortDirection, MveImagesSortItem, useDataMveImages } from '@hooks/use-data-mve-images.hook';
+import {
+  MveImagesSortDirection,
+  MveImagesSortItem,
+  useDataMveImages,
+} from '@hooks/use-data-mve-images.hook';
 import { MveImageCard } from '@components/mve-image-card';
 import { useState } from 'react';
 import { LoadingElement } from '../loading-element';
@@ -8,13 +12,15 @@ import styles from './mve-list.module.scss';
 export interface MveListProps {
   sortBy?: MveImagesSortItem;
   sortDirection?: MveImagesSortDirection;
+  searchText?: string;
 }
 
-export function MveList({ sortBy, sortDirection }: MveListProps) {
-
-  //  sortBy?: MveImagesSortItem;
-  //   sortDirection?: MveImageSortDirection;
-  const { isLoading, mveImages } = useDataMveImages({ sortBy, sortDirection });
+export function MveList({ sortBy, sortDirection, searchText }: MveListProps) {
+  const { isLoading, mveImages } = useDataMveImages({
+    sortBy,
+    sortDirection,
+    searchText,
+  });
   const [selectedImageId, setSelectedImageId] = useState('');
 
   if (isLoading) {
