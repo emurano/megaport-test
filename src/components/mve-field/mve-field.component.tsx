@@ -12,7 +12,7 @@ export interface MveFieldProps {
 export function MveField({ fieldId, onSelect, isSelected }: MveFieldProps) {
   const { field, isLoading } = useDataMveImageField(fieldId);
 
-  if (isLoading) return <LoadingElement />;
+  if (isLoading) return <LoadingElement testId="mve-field-loading"/>;
   if (!field) throw new Error(`No MVE field with id '${fieldId}'`);
 
   return (
